@@ -1,0 +1,32 @@
+{
+    "containerDefinitions": [
+      {
+        "image": "%AWSACCOUNT%.dkr.ecr.us-east-1.amazonaws.com/%REPO%",
+        "essential": true,
+        "name": "%CONTAINERNAME%",
+        "cpu": 256,
+        "memory": 512,
+        "portMappings": [
+          {
+            "hostPort": %CONTAINERPORT%,
+            "protocol": "tcp",
+            "containerPort": %CONTAINERPORT%
+          }
+        ]
+      }
+    ],
+    "requiresCompatibilities": [
+      "FARGATE"
+    ],
+    "executionRoleArn": "arn:aws:iam::%AWSACCOUNT%:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "cpu": "512",
+    "family": "%TASKDEFINITIONNAME%",
+    "memory": "1024",
+    "tags": [
+      {
+        "key": "Name",
+        "value": "kari-web"
+      }
+    ]
+  }
