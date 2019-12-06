@@ -70,7 +70,7 @@ pipeline {
                   aws/task-definition-${imageTag}.json\
           "
           TASK_DEFINITION = sh (returnStdout: true, script:"                                                                     \
-          aws ecs register-task-definition --region us-east-1 --family claudia-web                \
+          aws ecs register-task-definition --region us-east-1 --family ${taskDefinitionName}                \
             --cli-input-json file://aws/task-definition-${imageTag}.json        \
           ")
           TASK_DEFINITION_OBJECT = jsonParse(TASK_DEFINITION)
